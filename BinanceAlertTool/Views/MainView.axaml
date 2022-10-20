@@ -3,11 +3,134 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:BinanceAlertTool.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
              x:Class="BinanceAlertTool.Views.MainView"
              Foreground="White"
              Background="#171C2C">
-  <Design.DataContext>
-    <viewModels:MainViewModel />
-  </Design.DataContext>
+	<Design.DataContext>
+		<viewModels:MainViewModel />
+	</Design.DataContext>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"></RowDefinition>
+			<RowDefinition Height="auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="auto"></ColumnDefinition>
+			<ColumnDefinition Width="auto"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+			<ColumnDefinition Width="auto"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+
+		<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Content="Binance Alert Tool" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+		<StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Orientation="Vertical" Margin="24,32,0,0" HorizontalAlignment="Left">
+			<RadioButton Content="Estrategia personalizada"/>
+			<StackPanel Orientation="Horizontal" Margin="0,16,0,0">
+				<TextBlock Text="Estrategia" VerticalAlignment="Center"/>
+				<TextBox Text="Ruta al archivo de la estrategia" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="50" Margin="16,0,0,0"/>
+				<Button Content="Buscar" HorizontalAlignment="Center" Width="90" HorizontalContentAlignment="Center" Margin="16,0,0,0"/>
+			</StackPanel>
+
+			<RadioButton Content="Precio Personalizado" Margin="0,16,0,0"/>
+			<StackPanel Orientation="Horizontal" Margin="0,16,0,0">
+				<TextBlock Text="Precio" VerticalAlignment="Center"/>
+				<TextBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Width="200" Margin="16,0,0,0"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Margin="0,16,0,0">
+				<RadioButton HorizontalAlignment="Center" Content="Escritorio"/>
+				<RadioButton HorizontalAlignment="Center" Content="Telegram" Margin="16,0,0,0"/>
+				<RadioButton HorizontalAlignment="Center" Content="Ambos" Margin="16,0,0,0"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Margin="0,16,0,0">
+				<TextBlock Text="Api key" VerticalAlignment="Center"/>
+				<TextBox HorizontalContentAlignment="Center" Width="200" Height="40" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="16,0,0,0"></TextBox>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Margin="0,16,0,0">
+				<TextBlock Text="Secret key" VerticalAlignment="Center"/>
+				<TextBox HorizontalContentAlignment="Center" Width="200" Height="40" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="16,0,0,0"></TextBox>
+			</StackPanel>
+			<CheckBox Content="Guardar" Margin="0,16,0,0"></CheckBox>
+
+			<StackPanel Orientation="Horizontal" Margin="0,16,0,0">
+				<Button Content="Iniciar" Width="90" HorizontalContentAlignment="Center"/>
+				<Button Content="Parar" Width="90" HorizontalContentAlignment="Center" Margin="16,0,0,0"/>
+			</StackPanel>
+		</StackPanel>
+
+		<StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical" VerticalAlignment="Bottom" Margin="0,16,0,0">
+			<ComboBox HorizontalAlignment="Stretch" PlaceholderText="Mercado" Margin="16,0,8,0">
+				<ComboBoxItem>Spot</ComboBoxItem>
+				<ComboBoxItem>Margin</ComboBoxItem>
+				<ComboBoxItem>Futures</ComboBoxItem>
+			</ComboBox>
+			<CheckBox Content="Testnet" Margin="16,0,0,0"></CheckBox>
+			<Label Margin="0,0,0,0" Content="Disponibles" HorizontalAlignment="Center"/>
+		</StackPanel>
+		
+		<ScrollViewer Grid.Row="2" Grid.Column="2" Grid.RowSpan="5" Margin="16,8,8,16" VerticalScrollBarVisibility="Visible">
+			<ListBox>
+				<ListBoxItem>Hola</ListBoxItem>
+				<ListBoxItem>Hola1</ListBoxItem>
+				<ListBoxItem>Hola2</ListBoxItem>
+				<ListBoxItem>Hola3</ListBoxItem>
+				<ListBoxItem>Hola4</ListBoxItem>
+			</ListBox>
+		</ScrollViewer>
+
+		<StackPanel Grid.Row="4" Grid.Column="3" Orientation="Vertical" VerticalAlignment="Center">
+			<Button Content=">>>" HorizontalAlignment="Center" Width="70" HorizontalContentAlignment="Center"/>
+			<Button Content="&lt;&lt;&lt;" HorizontalAlignment="Center" Width="70" HorizontalContentAlignment="Center" Margin="0,16,0,0"/>
+			<Button Content="Limpiar" HorizontalAlignment="Center" Width="70" HorizontalContentAlignment="Center" Margin="0,16,0,0"/>
+		</StackPanel>
+
+		<Label Grid.Row="1" Grid.Column="5" Margin="0,8,0,0" Content="Seleccionados" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+		<ScrollViewer Grid.Row="2" Grid.Column="5" Grid.RowSpan="5" Margin="8,8,24,16">
+			<Grid ShowGridLines="false">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"></RowDefinition>
+					<RowDefinition Height="*"></RowDefinition>
+					<RowDefinition Height="*"></RowDefinition>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+
+				<ScrollViewer Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0,4,0,4" VerticalScrollBarVisibility="Visible">
+					<ListBox>
+						<ListBoxItem>Hola</ListBoxItem>
+						<ListBoxItem>Hola1</ListBoxItem>
+						<ListBoxItem>Hola2</ListBoxItem>
+						<ListBoxItem>Hola3</ListBoxItem>
+						<ListBoxItem>Hola4</ListBoxItem>
+						<ListBoxItem>Hola5</ListBoxItem>
+					</ListBox>
+				</ScrollViewer>
+				<ScrollViewer Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0,4,0,4" VerticalScrollBarVisibility="Visible">
+					<ListBox>
+						<ListBoxItem>Hola</ListBoxItem>
+						<ListBoxItem>Hola1</ListBoxItem>
+						<ListBoxItem>Hola2</ListBoxItem>
+						<ListBoxItem>Hola3</ListBoxItem>
+						<ListBoxItem>Hola4</ListBoxItem>
+					</ListBox>
+				</ScrollViewer>
+				<ScrollViewer Grid.Row="2" Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0,4,0,4" VerticalScrollBarVisibility="Visible">
+					<ListBox>
+						<ListBoxItem>Hola</ListBoxItem>
+						<ListBoxItem>Hola1</ListBoxItem>
+						<ListBoxItem>Hola2</ListBoxItem>
+						<ListBoxItem>Hola3</ListBoxItem>
+						<ListBoxItem>Hola4</ListBoxItem>
+					</ListBox>
+				</ScrollViewer>
+			</Grid>
+		</ScrollViewer>
+	</Grid>
 </UserControl>
